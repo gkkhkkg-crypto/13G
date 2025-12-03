@@ -2,7 +2,7 @@ name: Daily 13D/13G Monitor
 
 on:
   schedule:
-    - cron: "0 9 * * 1-5"   # Runs every day at 09:00 UTC
+    - cron: "0 7 * * 1-5"   # Runs every day at 09:00 UTC
   workflow_dispatch:
 
 jobs:
