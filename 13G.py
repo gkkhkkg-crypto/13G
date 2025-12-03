@@ -9,6 +9,9 @@ FUNDS = [
     {"name": "Point72 Asset Management", "cik": "1603466"},
     {"name": "Elliott",        "cik": "1791786"},
     {"name": "Starboard Value",           "cik": "1517137"},
+    {"name": "Jane Street",           "cik": "1595888"}
+    {"name": "Renaissance",           "cik": "1037389"}
+    {"name": "Citadel",           "cik": "1423053"}
 ]
 
 # sec-api.io endpoint (Form 13D/13G search)
