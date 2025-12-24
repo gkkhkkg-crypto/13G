@@ -12,6 +12,7 @@ FUNDS = [
     {"name": "Jane Street",           "cik": "1595888"},
     {"name": "Renaissance",           "cik": "1037389"},
     {"name": "Citadel",           "cik": "1423053"},
+    {"name": "Millennium",           "cik": "1273087"},
 ]
 
 # sec-api.io endpoint (Form 13D/13G search)
