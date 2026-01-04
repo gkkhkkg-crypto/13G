@@ -1,0 +1,41 @@
+name: Daily 13D/13G Monitor
+
+on:
+  schedule:
+    - cron: "0 7 * * 2,5"   # Runs Tue/Fri at 07:00 UTC
+  workflow_dispatch:
+
+jobs:
+  run-monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests requests-oauthlib
+
+      # Persist state.json between runs so you don't tweet duplicates.
+      # Uses restore-keys to restore the most recent matching cache. :contentReference[oaicite:2]{index=2}
+      - name: Restore state cache
+        uses: actions/cache@v4
+        with:
+          path: state.json
+          key: edinet-state-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            edinet-state-${{ runner.os }}-
+
+      - name: Run EDINET monitor
+        env:
+          EDINET_API_KEY: ${{ secrets.EDINET_API_KEY }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET_KEY: ${{ secrets.X_API_SECRET_KEY }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: python edinet_monitor.py
