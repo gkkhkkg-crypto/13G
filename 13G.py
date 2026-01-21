@@ -27,7 +27,7 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "5937443021")
 
 # How many days back to consider (just in case),
 # but we only show the latest N filings anyway
-LOOKBACK_DAYS = 365
+LOOKBACK_DAYS = 60
 
 # Show at most this many filings per fund
 MAX_FILINGS_PER_FUND = 5
